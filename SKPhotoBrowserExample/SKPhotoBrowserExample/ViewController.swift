@@ -30,12 +30,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for i in 0..<30{
-            let photo = SKPhoto.photoWithImage(UIImage(named: "image\(i%10).jpg")!)
-            photo.caption = caption[i%10]
-            images.append(photo)
-        }
-        
+//        for i in 0..<30{
+//            let photo = SKPhoto.photoWithImage(UIImage(named: "image\(i%10).jpg")!)
+//            photo.caption = caption[i%10]
+//            images.append(photo)
+//        }
+		
         setupTableView()
     }
     
@@ -50,13 +50,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // MARK: - UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+//        return images.count
+        return 10
     }
+	
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("exampleCollectionViewCell", forIndexPath: indexPath) as! ExampleCollectionViewCell
-        
-        cell.exampleImageView.image = images[indexPath.row].underlyingImage
+		let urlStringComesFromAPI = "https://placehold.jp/150x15\(indexPath.row).png"
+		
+		// add property
+        let photo = SKPhoto.photoWithImageURL(urlStringComesFromAPI)
+        images.append(photo)
+		
+		// set acutual cell
+        cell.setExampleImageViewFromURL(urlStringComesFromAPI)
         
         return cell
     }
@@ -99,5 +107,27 @@ class ExampleCollectionViewCell:UICollectionViewCell{
     override func prepareForReuse() {
         exampleImageView.image = nil
     }
+	
+	func setExampleImageViewFromURL(url: String){
+		// Fetch Image
+		let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+		if let nsURL = NSURL(string: url) {
+			session.dataTaskWithURL(nsURL, completionHandler: {
+				(response: NSData?, data: NSURLResponse?, error: NSError?) in
+				if error != nil {
+					dispatch_async(dispatch_get_main_queue()) {
+						self.exampleImageView.image = UIImage()
+					}
+				}
+				if let res = response, let image = UIImage(data: res) {
+					dispatch_async(dispatch_get_main_queue()) {
+						self.exampleImageView.image = image
+					}
+				}
+				session.finishTasksAndInvalidate()
+			}).resume()
+		}
+		return 
+	}
 }
 
