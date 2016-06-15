@@ -18,7 +18,6 @@ import UIKit
 
 // MARK: - SKPhoto
 public class SKPhoto: NSObject, SKPhotoProtocol {
-    
     public var underlyingImage: UIImage!
     public var photoURL: String!
     public var shouldCachePhotoURLImage: Bool = false
@@ -46,46 +45,54 @@ public class SKPhoto: NSObject, SKPhotoProtocol {
     }
     
     public func checkCache() {
-        if photoURL != nil && shouldCachePhotoURLImage {
-            if let img = UIImage.sharedSKPhotoCache().objectForKey(photoURL) as? UIImage {
-                underlyingImage = img
-            }
+        guard let URL = photoURL, let img = UIImage.sharedSKPhotoCache().objectForKey(URL) as? UIImage else {
+            return
         }
+        guard shouldCachePhotoURLImage else {
+            return
+        }
+        underlyingImage = img
     }
     
     public func loadUnderlyingImageAndNotify() {
-        
-        if underlyingImage != nil && photoURL == nil {
+        guard let photoURL = photoURL else {
             loadUnderlyingImageComplete()
+            return
+        }
+        guard underlyingImage == nil else {
+            loadUnderlyingImageComplete()
+            return
+        }
+        guard let nsURL = NSURL(string: photoURL) else {
+            return
         }
         
-        if photoURL != nil {
-            // Fetch Image
-            let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-            if let nsURL = NSURL(string: photoURL) {
-                session.dataTaskWithURL(nsURL, completionHandler: { [weak self](response: NSData?, data: NSURLResponse?, error: NSError?) in
-                    if let _self = self {
-                        
-                        if error != nil {
-                            dispatch_async(dispatch_get_main_queue()) {
-                                _self.loadUnderlyingImageComplete()
-                            }
-                        }
-                        
-                        if let res = response, let image = UIImage(data: res) {
-                            if _self.shouldCachePhotoURLImage {
-                                UIImage.sharedSKPhotoCache().setObject(image, forKey: _self.photoURL)
-                            }
-                            dispatch_async(dispatch_get_main_queue()) {
-                                _self.underlyingImage = image
-                                _self.loadUnderlyingImageComplete()
-                            }
-                        }
-                        session.finishTasksAndInvalidate()
-                    }
-                }).resume()
+        // Fetch Image
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        
+        session.dataTaskWithURL(nsURL, completionHandler: { [weak self](response: NSData?, data: NSURLResponse?, error: NSError?) in
+            guard let `self` = self else {
+                return
             }
-        }
+            
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.loadUnderlyingImageComplete()
+                }
+            }
+            
+            if let res = response, let image = UIImage(data: res) {
+                if self.shouldCachePhotoURLImage {
+                    UIImage.sharedSKPhotoCache().setObject(image, forKey: self.photoURL)
+                }
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.underlyingImage = image
+                    self.loadUnderlyingImageComplete()
+                }
+            }
+            session.finishTasksAndInvalidate()
+            
+        }).resume()
     }
 
     public func loadUnderlyingImageComplete() {

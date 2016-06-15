@@ -43,6 +43,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 photo.photoURL = "https://images.unsplash.com/photo-1458640904116-093b74971de9?crop=entropy&dpr=2&fit=crop&fm=jpg&h=800&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1275"
             }
             photo.caption = caption[i%10]
+            
             images.append(photo)
         }
         
@@ -72,6 +73,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             return UICollectionViewCell()
         }
         cell.exampleImageView.image = images[indexPath.row].underlyingImage
+        cell.exampleImageView.contentMode = .ScaleAspectFit
         return cell
     }
     

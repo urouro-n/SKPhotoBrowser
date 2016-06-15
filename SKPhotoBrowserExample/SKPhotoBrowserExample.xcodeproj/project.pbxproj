@@ -37,6 +37,13 @@
 			remoteGlobalIDString = 8909B5301BC791280060A053;
 			remoteInfo = SKPhotoBrowser;
 		};
+		898CB9301D07E1C0007E4A4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8909B56C1BC792570060A053 /* SKPhotoBrowser.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A64B89331CB04222000071B9;
+			remoteInfo = SKPhotoBrowserTests;
+		};
 		A6A7B7821C9578E30025AC07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8909B56C1BC792570060A053 /* SKPhotoBrowser.xcodeproj */;
@@ -129,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				8909B5711BC792570060A053 /* SKPhotoBrowser.framework */,
+				898CB9311D07E1C0007E4A4B /* SKPhotoBrowserTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -253,6 +261,13 @@
 			fileType = wrapper.framework;
 			path = SKPhotoBrowser.framework;
 			remoteRef = 8909B5701BC792570060A053 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		898CB9311D07E1C0007E4A4B /* SKPhotoBrowserTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SKPhotoBrowserTests.xctest;
+			remoteRef = 898CB9301D07E1C0007E4A4B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

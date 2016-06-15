@@ -188,7 +188,7 @@ public class SKZoomingScrollView: UIScrollView, UIScrollViewDelegate, SKDetectin
         maximumZoomScale = 1
         minimumZoomScale = 1
         zoomScale = 1
-        contentSize = CGSize.zero
+        contentSize = .zero
         
         if !flag {
             indicatorView.startAnimating()

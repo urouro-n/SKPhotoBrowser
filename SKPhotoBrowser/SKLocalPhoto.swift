@@ -49,9 +49,7 @@ public class SKLocalPhoto: NSObject, SKPhotoProtocol {
                         self.underlyingImage = image
                         self.loadUnderlyingImageComplete()
                     }
-                    
                 }
-                
             }
         }
     }

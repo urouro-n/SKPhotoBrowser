@@ -9,7 +9,7 @@
 import UIKit
 
 public class SKCaptionView: UIView {
-    final let screenBound = UIScreen.mainScreen().bounds
+    private let screenBound = UIScreen.mainScreen().bounds
     private var screenWidth: CGFloat { return screenBound.size.width }
     private var screenHeight: CGFloat { return screenBound.size.height }
     private var photo: SKPhotoProtocol!

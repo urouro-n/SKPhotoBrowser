@@ -516,7 +516,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
             return
         }
         
-        dispatch_async(dispatch_get_main_queue(), {
+        dispatch_async(dispatch_get_main_queue()) {
             let page = self.pageDisplayingAtPhoto(photo)
             guard let photo = page.photo else {
                 return
@@ -528,7 +528,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
             } else {
                 page.displayImageFailure()
             }
-        })
+        }
     }
     
     public func loadAdjacentPhotosIfNecessary(photo: SKPhotoProtocol) {
@@ -889,7 +889,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         resizableImageView.frame = frame
         resizableImageView.alpha = 1.0
         resizableImageView.clipsToBounds = true
-        resizableImageView.contentMode = .ScaleAspectFill
+//        resizableImageView.contentMode = .ScaleAspectFill
         applicationWindow.addSubview(resizableImageView)
         
         if let view = senderViewForAnimation where view.layer.cornerRadius != 0 {
