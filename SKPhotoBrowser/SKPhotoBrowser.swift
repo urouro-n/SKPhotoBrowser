@@ -93,35 +93,48 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         return 1
     }
     
-    // device property
-    final let screenBounds = UIScreen.mainScreen().bounds
-    var screenWidth: CGFloat { return screenBounds.size.width }
-    var screenHeight: CGFloat { return screenBounds.size.height }
-    var screenRatio: CGFloat { return screenWidth / screenHeight }
-    
-    // custom abilities
-    public var displayAction: Bool = true
-    public var shareExtraCaption: String? = nil
+    ///////////////////
+    // Custom abilities
+    ///////////////////
+    // MARK: - Public Property
     public var actionButtonTitles: [String]?
-    public var displayToolbar: Bool = true
-    public var displayCounterLabel: Bool = true
+    public var shareExtraCaption: String? = nil
+    
+    public var displayAction: Bool = true
     public var displayBackAndForwardButton: Bool = true
+    public var displayCloseButton: Bool = true
+    public var displayCustomCloseButton: Bool = false
+    public var displayCustomDeleteButton: Bool = false
+    public var displayCounterLabel: Bool = true
+    public var displayDeleteButton: Bool = false
+    public var displayToolbar: Bool = true
     public var disableVerticalSwipe: Bool = false
-    public var displayDeleteButton = false
-    public var displayCloseButton = true // default is true
-    /// If it is true displayCloseButton will be false
-    public var displayCustomCloseButton = false
-    /// If it is true displayDeleteButton will be false
-    public var displayCustomDeleteButton = false
-    public var bounceAnimation = false
-    public var enableZoomBlackArea = true
-    public var enableSingleTapDismiss = false
+    
+    // animation
+    public var bounceAnimation: Bool = false
+    public var enableZoomBlackArea: Bool = true
+    public var enableSingleTapDismiss: Bool = false
+    
     /// Set nil to force the statusbar to be hidden
     public var statusBarStyle: UIStatusBarStyle?
     
+    // button frame
+    public var customCloseButtonShowFrame: CGRect!
+    public var customCloseButtonHideFrame: CGRect!
+    public var customCloseButtonImage: UIImage!
+    public var customCloseButtonEdgeInsets: UIEdgeInsets!
+    
+    public var customDeleteButtonShowFrame: CGRect!
+    public var customDeleteButtonHideFrame: CGRect!
+    public var customDeleteButtonImage: UIImage!
+    public var customDeleteButtonEdgeInsets: UIEdgeInsets!
+    
+    ///////////////////
+    // Private abilities
+    ///////////////////
+    // MARK: - Private Property
     // actions
     private var activityViewController: UIActivityViewController!
-    
     // tool for controls
     private var applicationWindow: UIWindow!
     private var backgroundView: UIView!
@@ -133,40 +146,27 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
     private var toolNextButton: UIBarButtonItem!
     private var pagingScrollView: UIScrollView!
     private var panGesture: UIPanGestureRecognizer!
-    // MARK: close button
+    
     private var closeButton: UIButton!
     private var closeButtonShowFrame: CGRect!
     private var closeButtonHideFrame: CGRect!
-    // MARK: delete button
+    private var customCloseButton: UIButton!
     private var deleteButton: UIButton!
     private var deleteButtonShowFrame: CGRect!
     private var deleteButtonHideFrame: CGRect!
-    
-    // MARK: - custom buttons
-    // MARK: CustomCloseButton
-    private var customCloseButton: UIButton!
-    public var customCloseButtonShowFrame: CGRect!
-    public var customCloseButtonHideFrame: CGRect!
-    public var customCloseButtonImage: UIImage!
-    public var customCloseButtonEdgeInsets: UIEdgeInsets!
-    
-    // MARK: CustomDeleteButton
     private var customDeleteButton: UIButton!
-    public var customDeleteButtonShowFrame: CGRect!
-    public var customDeleteButtonHideFrame: CGRect!
-    public var customDeleteButtonImage: UIImage!
-    public var customDeleteButtonEdgeInsets: UIEdgeInsets!
     
-    // photo's paging
-    private var visiblePages = [SKZoomingScrollView]()//: Set<SKZoomingScrollView> = Set()
-    private var recycledPages = [SKZoomingScrollView]()
+    // paging
+    private var visiblePages: [SKZoomingScrollView] = [SKZoomingScrollView]()
+    private var recycledPages: [SKZoomingScrollView] = [SKZoomingScrollView]()
     
+    // paging index
     private var initialPageIndex: Int = 0
     private var currentPageIndex: Int = 0
     
     // senderView's property
     private var senderViewForAnimation: UIView?
-    private var senderViewOriginalFrame: CGRect = CGRect.zero
+    private var senderViewOriginalFrame: CGRect = .zero
     private var senderOriginImage: UIImage!
     
     private var resizableImageView: UIImageView = UIImageView()
@@ -233,6 +233,11 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    public convenience init(builder: SKPhotoBrowserOptionBuilder) {
+        self.init(nibName: nil, bundle: nil)
+        
+    }
+    
     deinit {
         pagingScrollView = nil
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -259,7 +264,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         view.clipsToBounds = true
         view.opaque = false
         
-        backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+        backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: SKMeasure.screenWidth, height: SKMeasure.screenHeight))
         backgroundView.backgroundColor = .blackColor()
         backgroundView.alpha = 0.0
         applicationWindow.addSubview(backgroundView)
@@ -789,7 +794,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
             resizableImageView.contentMode = .ScaleAspectFill
             applicationWindow.addSubview(resizableImageView)
             
-            if screenRatio < imageRatio {
+            if SKMeasure.screenRatio < imageRatio {
                 let width = applicationWindow.frame.width
                 let height = width / imageRatio
                 let yOffset = (applicationWindow.frame.height - height) / 2
@@ -1193,9 +1198,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
 					popoverController.sourceView = self.view
 				    popoverController.barButtonItem = toolActionButton
 				}
-            
-                presentViewController(actionSheetController, animated: true, completion: { () -> Void in
-                })
+                presentViewController(actionSheetController, animated: true, completion: nil)
             }
         } else {
             guard let underlyingImage = photo.underlyingImage else {
