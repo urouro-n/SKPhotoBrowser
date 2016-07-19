@@ -73,7 +73,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             return UICollectionViewCell()
         }
         cell.exampleImageView.image = images[indexPath.row].underlyingImage
-        cell.exampleImageView.contentMode = .ScaleAspectFit
         return cell
     }
     

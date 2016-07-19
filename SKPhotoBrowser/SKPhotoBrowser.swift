@@ -889,7 +889,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         resizableImageView.frame = frame
         resizableImageView.alpha = 1.0
         resizableImageView.clipsToBounds = true
-//        resizableImageView.contentMode = .ScaleAspectFill
+        resizableImageView.contentMode = .ScaleAspectFill
         applicationWindow.addSubview(resizableImageView)
         
         if let view = senderViewForAnimation where view.layer.cornerRadius != 0 {
