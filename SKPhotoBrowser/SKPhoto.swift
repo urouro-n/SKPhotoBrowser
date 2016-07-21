@@ -67,30 +67,31 @@ public class SKPhoto: NSObject, SKPhotoProtocol {
             return
         }
         
-        // Fetch Image
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        
         session.dataTaskWithURL(nsURL, completionHandler: { [weak self](response: NSData?, data: NSURLResponse?, error: NSError?) in
+            defer {
+                session.finishTasksAndInvalidate()
+            }
             guard let `self` = self else {
                 return
             }
-            
-            if error != nil {
+            guard let _ = error else {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.loadUnderlyingImageComplete()
                 }
+                return
+            }
+            guard let res = response, let image = UIImage(data: res) else {
+                return
             }
             
-            if let res = response, let image = UIImage(data: res) {
-                if self.shouldCachePhotoURLImage {
-                    UIImage.sharedSKPhotoCache().setObject(image, forKey: self.photoURL)
-                }
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.underlyingImage = image
-                    self.loadUnderlyingImageComplete()
-                }
+            if self.shouldCachePhotoURLImage {
+                UIImage.sharedSKPhotoCache().setObject(image, forKey: self.photoURL)
             }
-            session.finishTasksAndInvalidate()
+            dispatch_async(dispatch_get_main_queue()) {
+                self.underlyingImage = image
+                self.loadUnderlyingImageComplete()
+            }
             
         }).resume()
     }
