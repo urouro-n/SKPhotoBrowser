@@ -256,7 +256,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         view.backgroundColor = .blackColor()
-        view.clipsToBounds = true
+        view.clipsToBounds = false
         view.opaque = false
         
         backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
@@ -273,6 +273,7 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         pagingScrollView.showsVerticalScrollIndicator = true
         pagingScrollView.backgroundColor = .clearColor()
         pagingScrollView.contentSize = contentSizeForPagingScrollView()
+        pagingScrollView.clipsToBounds = false
         view.addSubview(pagingScrollView)
         
         // toolbar
@@ -616,6 +617,8 @@ public class SKPhotoBrowser: UIViewController, UIScrollViewDelegate {
         var frame = view.bounds
         frame.origin.x -= 10
         frame.size.width += (2 * 10)
+        frame.size.height -= (44.0 + 50.0)
+        frame.origin.y += 44.0
         return frame
     }
     
