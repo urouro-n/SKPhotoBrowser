@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		212705891C92C69C00466223 /* CameraRollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212705881C92C69C00466223 /* CameraRollViewController.swift */; };
+		212705891C92C69C00466223 /* FromCameraRollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212705881C92C69C00466223 /* FromCameraRollViewController.swift */; };
 		8909B55B1BC792150060A053 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909B55A1BC792150060A053 /* AppDelegate.swift */; };
-		8909B55D1BC792150060A053 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909B55C1BC792150060A053 /* ViewController.swift */; };
+		8909B55D1BC792150060A053 /* FromLocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8909B55C1BC792150060A053 /* FromLocalViewController.swift */; };
 		8909B5601BC792150060A053 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8909B55E1BC792150060A053 /* Main.storyboard */; };
 		8909B5621BC792150060A053 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8909B5611BC792150060A053 /* Assets.xcassets */; };
 		8909B5651BC792150060A053 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8909B5631BC792150060A053 /* LaunchScreen.storyboard */; };
@@ -25,8 +25,10 @@
 		8909B58A1BC792DC0060A053 /* image7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B57E1BC792DC0060A053 /* image7.jpg */; };
 		8909B58B1BC792DC0060A053 /* image8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B57F1BC792DC0060A053 /* image8.jpg */; };
 		8909B58C1BC792DC0060A053 /* image9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8909B5801BC792DC0060A053 /* image9.jpg */; };
+		89FC5DBB1D54A04900F1BE52 /* FromWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FC5DBA1D54A04900F1BE52 /* FromWebViewController.swift */; };
 		A6A7B7801C9578E30025AC07 /* SKPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8909B5711BC792570060A053 /* SKPhotoBrowser.framework */; };
 		A6A7B7811C9578E30025AC07 /* SKPhotoBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8909B5711BC792570060A053 /* SKPhotoBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DDFD24AF2FBA5A60984D378D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2188E912BB106233AA4AB2 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 8909B5301BC791280060A053;
 			remoteInfo = SKPhotoBrowser;
+		};
+		89FC5DBD1D54A04A00F1BE52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8909B56C1BC792570060A053 /* SKPhotoBrowser.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A64B89331CB04222000071B9;
+			remoteInfo = SKPhotoBrowserTests;
 		};
 		A6A7B7821C9578E30025AC07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -61,10 +70,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		212705881C92C69C00466223 /* CameraRollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraRollViewController.swift; sourceTree = "<group>"; };
+		212705881C92C69C00466223 /* FromCameraRollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromCameraRollViewController.swift; sourceTree = "<group>"; };
+		7C2188E912BB106233AA4AB2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8909B5571BC792150060A053 /* SKPhotoBrowserExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SKPhotoBrowserExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8909B55A1BC792150060A053 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8909B55C1BC792150060A053 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8909B55C1BC792150060A053 /* FromLocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromLocalViewController.swift; sourceTree = "<group>"; };
 		8909B55F1BC792150060A053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8909B5611BC792150060A053 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8909B5641BC792150060A053 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,6 +92,9 @@
 		8909B57E1BC792DC0060A053 /* image7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image7.jpg; sourceTree = "<group>"; };
 		8909B57F1BC792DC0060A053 /* image8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image8.jpg; sourceTree = "<group>"; };
 		8909B5801BC792DC0060A053 /* image9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image9.jpg; sourceTree = "<group>"; };
+		89FC5DBA1D54A04900F1BE52 /* FromWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromWebViewController.swift; sourceTree = "<group>"; };
+		B3E081D4F2C8623852C459F5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DD077DBD0C164C96BCC7494F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6A7B7801C9578E30025AC07 /* SKPhotoBrowser.framework in Frameworks */,
+				DDFD24AF2FBA5A60984D378D /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +116,8 @@
 				8909B56C1BC792570060A053 /* SKPhotoBrowser.xcodeproj */,
 				8909B5591BC792150060A053 /* SKPhotoBrowserExample */,
 				8909B5581BC792150060A053 /* Products */,
+				D1D8ECD45B290372235B8168 /* Pods */,
+				C646D2C27A5B9CCC003A9BD1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				8909B5711BC792570060A053 /* SKPhotoBrowser.framework */,
+				89FC5DBE1D54A04A00F1BE52 /* SKPhotoBrowserTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,8 +172,9 @@
 		A6EBAD761CAFB87A00F80595 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8909B55C1BC792150060A053 /* ViewController.swift */,
-				212705881C92C69C00466223 /* CameraRollViewController.swift */,
+				8909B55C1BC792150060A053 /* FromLocalViewController.swift */,
+				212705881C92C69C00466223 /* FromCameraRollViewController.swift */,
+				89FC5DBA1D54A04900F1BE52 /* FromWebViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -187,6 +205,23 @@
 			name = Info;
 			sourceTree = "<group>";
 		};
+		C646D2C27A5B9CCC003A9BD1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C2188E912BB106233AA4AB2 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D1D8ECD45B290372235B8168 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B3E081D4F2C8623852C459F5 /* Pods.debug.xcconfig */,
+				DD077DBD0C164C96BCC7494F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -194,10 +229,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8909B5691BC792150060A053 /* Build configuration list for PBXNativeTarget "SKPhotoBrowserExample" */;
 			buildPhases = (
+				F19A62C34B2F0CFF753F30C3 /* Check Pods Manifest.lock */,
 				8909B5531BC792150060A053 /* Sources */,
 				8909B5541BC792150060A053 /* Frameworks */,
 				8909B5551BC792150060A053 /* Resources */,
 				A6A7B7841C9578E30025AC07 /* Embed Frameworks */,
+				575DBD5855AB711E5773767A /* Embed Pods Frameworks */,
+				2ECF43C4E99CDE3D98AE6842 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,6 +258,7 @@
 				TargetAttributes = {
 					8909B5561BC792150060A053 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -255,6 +294,13 @@
 			remoteRef = 8909B5701BC792570060A053 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		89FC5DBE1D54A04A00F1BE52 /* SKPhotoBrowserTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SKPhotoBrowserTests.xctest;
+			remoteRef = 89FC5DBD1D54A04A00F1BE52 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -282,14 +328,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2ECF43C4E99CDE3D98AE6842 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		575DBD5855AB711E5773767A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F19A62C34B2F0CFF753F30C3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8909B5531BC792150060A053 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				212705891C92C69C00466223 /* CameraRollViewController.swift in Sources */,
-				8909B55D1BC792150060A053 /* ViewController.swift in Sources */,
+				212705891C92C69C00466223 /* FromCameraRollViewController.swift in Sources */,
+				8909B55D1BC792150060A053 /* FromLocalViewController.swift in Sources */,
 				8909B55B1BC792150060A053 /* AppDelegate.swift in Sources */,
+				89FC5DBB1D54A04900F1BE52 /* FromWebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +503,7 @@
 		};
 		8909B56A1BC792150060A053 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3E081D4F2C8623852C459F5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -416,11 +512,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keishi.suzuki.aSKPhotoBrowserExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		8909B56B1BC792150060A053 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD077DBD0C164C96BCC7494F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -429,6 +527,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keishi.suzuki.aSKPhotoBrowserExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

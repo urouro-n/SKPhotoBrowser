@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import SKPhotoBrowser
 
-class CameraRollViewController: UIViewController, SKPhotoBrowserDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class FromCameraRollViewController: UIViewController, SKPhotoBrowserDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -107,10 +107,9 @@ class CameraRollViewController: UIViewController, SKPhotoBrowserDelegate, UIColl
             
             browser.initializePageIndex(indexPath.row)
             browser.delegate = self
-            browser.bounceAnimation = true
-            browser.displayDeleteButton = true
-            browser.displayAction = false
-            browser.statusBarStyle = .LightContent
+//            browser.bounceAnimation = true
+//            browser.displayDeleteButton = true
+//            browser.displayAction = false
             self.presentViewController(browser, animated: true, completion: {})
         }
         
@@ -168,8 +167,7 @@ class CameraRollViewController: UIViewController, SKPhotoBrowserDelegate, UIColl
                 let requestId = dict?[PHImageResultRequestIDKey] as? NSNumber
                 completion(image: image, requestId: requestId?.intValue)
             }
-        }
-        else {
+        } else {
             return imageManager.requestImageForAsset(asset, targetSize: targetSize, contentMode: .AspectFill, options: options) { image, dict in
                 let requestId = dict?[PHImageResultRequestIDKey] as? NSNumber
                 completion(image: image, requestId: requestId?.intValue)
